@@ -1,10 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h> 
-
-
-
-
-
 
 void Combination_zero_cnt(long long  N, long long M)
 {
