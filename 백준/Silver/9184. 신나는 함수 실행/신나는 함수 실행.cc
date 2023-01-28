@@ -4,9 +4,9 @@ using namespace std;
 
 int w(int a, int b, int c)
 {
-
-    int dp[22][22][22] = {
-        0};
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int dp[22][22][22] = {0};
 
     for (int i = 0; i < 22; i++)
     {
