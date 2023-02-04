@@ -2,8 +2,72 @@
 #include <queue>
 using namespace std;
 
-int main()
+void solve(deque<int> input, string p)
 {
+    int size = 0;
+    int len = p.length(), R = 0;
+
+    for (int i = 0; i < len; i++)
+    {
+
+        if ('R' == p[i])
+            R++;
+
+        else if ('D' == p[i])
+        {
+            if (input.size() == 0)
+            {
+
+                cout << "error"
+                     << "\n";
+                return;
+            }
+
+            else
+            {
+                if (R % 2 == 1)
+                {
+                    input.pop_back();
+                }
+                else
+                {
+                    input.pop_front();
+                }
+            }
+        }
+    }
+
+    size = input.size();
+
+    cout << '[';
+
+    if (input.size() == 0)
+    {
+        cout << ']' << "\n";
+    }
+
+    else if (R % 2 == 1)
+    {
+
+        for (int i = size - 1; i > 0; i--)
+            cout << input[i] << ',';
+
+        cout << input[0] << ']' << "\n";
+    }
+
+    else
+    {
+        for (int i = 0; i < size - 1; i++)
+            cout << input[i] << ',';
+
+        cout << input[size - 1] << ']' << "\n";
+    }
+}
+
+int main()
+{    
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
     int T;
     cin >> T;
 
@@ -12,7 +76,6 @@ int main()
         int n, arrlen, num = 0;
         deque<int> input;
         string p, arr;
-        bool error=false;
 
         cin >> p >> n >> arr;
         arrlen = arr.length();
@@ -32,65 +95,6 @@ int main()
                 }
             }
         }
-        int size = 0;
-        int len = p.length(), R = 0;
-
-        for (int i = 0; i < len; i++)
-        {
-
-            if ('R' == p[i])
-                R++;
-
-            else if ('D' == p[i])
-            {
-                if (input.size() == 0)
-                {
-
-                    cout << "error"
-                         << "\n";
-                    error=true;
-                    break;
-                }
-
-                else
-                {
-                    if (R % 2 == 1)
-                    {
-                        input.pop_back();
-                    }
-                    else
-                    {
-                        input.pop_front();
-                    }
-                }
-            }
-        }
-        if(error)
-            continue;
-        size = input.size();
-
-        cout << '[';
-
-        if (input.size() == 0)
-        {
-            cout << ']' << "\n";
-        }
-
-        else if (R % 2 == 1)
-        {
-
-            for (int i = size - 1; i > 0; i--)
-                cout << input[i] << ',';
-
-            cout << input[0] << ']' << "\n";
-        }
-
-        else
-        {
-            for (int i = 0; i < size - 1; i++)
-                cout << input[i] << ',';
-
-            cout << input[size - 1] << ']' << "\n";
-        }
+        solve(input, p);
     }
 }
