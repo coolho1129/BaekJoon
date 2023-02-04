@@ -4,8 +4,7 @@ using namespace std;
 
 void solve(deque<int> input, string p)
 {   
-    ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+    
     int size = 0;
     int len = p.length(), R = 0;
 
@@ -68,6 +67,10 @@ void solve(deque<int> input, string p)
 
 int main()
 {
+    
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); 
+    cout.tie(NULL);
     int T;
     cin >> T;
 
