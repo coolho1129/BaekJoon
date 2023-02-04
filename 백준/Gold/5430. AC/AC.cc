@@ -9,7 +9,6 @@ void solve(deque<int> input, string p)
 
     for (int i = 0; i < len; i++)
     {
-        // cout << p[i] << " ";
 
         if ('R' == p[i])
             R++;
@@ -94,9 +93,6 @@ int main()
                 }
             }
         }
-        /*for (int i = 0; i < input.size(); i++)
-            cout << input[i] << " ";
-        cout << "\n";*/
         solve(input, p);
     }
 }
