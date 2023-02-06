@@ -5,28 +5,24 @@ using namespace std;
 
 ll binarySearch(ll *lan, ll start, ll end, ll size, ll find)
 {
-  ll result=0;
-    while(start<=end){
-        
-        ll mid = (start + end) / 2;
-        ll sum = 0;
-        for (ll i = 0; i < size; i++)
-        {
-            sum += lan[i] / mid;
-        }
-    
-        if (sum >= find)
-        {
-            result=mid;
-            start=mid+1;
-        }
-        else
-        {
-           end=mid-1;
-        }
+    ll mid = (start + end) / 2;
+    ll sum = 0;
+    for (ll i = 0; i < size; i++)
+    {
+        sum += lan[i] / mid;
     }
-    
-    return result;
+    if (sum >= find)
+    {
+        if (start == mid)
+            return mid;
+        else
+            return binarySearch(lan, mid, end, size, find);
+    }
+    else
+    {
+     
+            return binarySearch(lan, start, mid, size, find);
+    }
 }
 
 int main()
@@ -48,6 +44,5 @@ int main()
             max=lan[i];
     }
 
- 
-    cout << binarySearch(lan, 1, max, K, N);
+   cout << binarySearch(lan, 1, max+1, K, N);
 }
