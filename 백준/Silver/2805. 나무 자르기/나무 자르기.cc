@@ -34,6 +34,9 @@ ll binarysearch(vector<ll> &v, ll start, ll end, ll find)
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
     ll N, M, max = 0;
     cin >> N >> M;
 
