@@ -9,17 +9,16 @@ int main()
     cout.tie(0);
     int N, M, input, cnt;
     int B, inven;
-    vector<int> land;
 
     cin >> N >> M >> B;
 
     int size = N * M;
+    vector<int> land(size);
 
     for (int i = 0; i < size; i++)
     {
 
-        cin >> input;
-        land.push_back(input);
+        cin >> land[i];
     }
 
     int min = INT_MAX;
