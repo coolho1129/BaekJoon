@@ -3,14 +3,14 @@
 using namespace std;
 
 
-ll binarysearch(vector<ll> &v, ll start, ll end, ll find)
+ll binarysearch(ll *v, ll start, ll end, ll find,ll size)
 {
     ll result = 0;
     while (start <= end)
     {
         ll mid = (start + end) / 2;
         ll sum = 0;
-        for (ll i = 0; i < v.size(); i++)
+        for (ll i = 0; i < size; i++)
         {
 
             if (v[i] >= mid)
@@ -39,8 +39,9 @@ int main()
     cout.tie(0);
     ll N, M, max = 0;
     cin >> N >> M;
+    ll *input=new ll[N];
 
-    vector<ll> input(N);
+
 
     for (ll i = 0; i < N; i++)
     {
@@ -49,5 +50,5 @@ int main()
             max = input[i];
     }
 
-    cout << binarysearch(input, 0, max, M);
+    cout << binarysearch(input, 0, max, M,N);
 }
