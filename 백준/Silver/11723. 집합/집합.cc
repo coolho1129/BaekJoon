@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
+#define fastio cin.tie(0), cout.tie(0), ios::sync_with_stdio(false)
 
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    fastio;
     int T;
     cin >> T;
     int S[20] = {0};
