@@ -14,7 +14,7 @@ int main()
 
     vector<vi> graph(N + 1);
     vector<bool> visit(N + 1);
-    vector<bool> visit2(N + 1);
+   
 
     for (int i = 0; i < M; i++)
     {
@@ -30,7 +30,7 @@ int main()
 
     dfs(graph, start, visit);
 
-    bfs(graph, start, visit2);
+    bfs(graph, start, visit);
 }
 
 void dfs(vector<vi> graph, int start, vector<bool> check)
