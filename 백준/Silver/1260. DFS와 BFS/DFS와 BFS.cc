@@ -1,24 +1,24 @@
 #include <bits/stdc++.h>
 #define vi vector<int>
 #define vii vector<vi>
+#define vb vector<bool>
 
 using namespace std;
 
-void dfs(vii graph, int start, vector<bool> check);
-void bfs(vii graph, int start, vector<bool> check);
+void dfs(vii graph, int start, vb visit);
+void bfs(vii graph, int start, vb visit);
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    
+
     int N, M, start, u, v;
     cin >> N >> M >> start;
 
     vii graph(N + 1);
-    vector<bool> visit(N + 1,false);
-   
+    vb visit(N + 1, false);
 
     for (int i = 0; i < M; i++)
     {
@@ -36,13 +36,11 @@ int main()
     bfs(graph, start, visit);
 }
 
-void dfs(vii graph, int start, vector<bool> check)
+void dfs(vii graph, int start, vb visit)
 {
-    // cout << "dfs2";
-
     stack<int> s;
     s.push(start);
-    check[start] = true;
+    visit[start] = true;
 
     cout << start << " ";
 
@@ -56,10 +54,10 @@ void dfs(vii graph, int start, vector<bool> check)
 
             int next_node = graph[current_node][i];
 
-            if (check[next_node] == false)
+            if (visit[next_node] == false)
             {
                 cout << next_node << " ";
-                check[next_node] = true;
+                visit[next_node] = true;
                 // pop()을 했었기 때문에 현재 current_node도 넣어줘야한다.
                 s.push(current_node);
                 s.push(next_node);
@@ -71,14 +69,13 @@ void dfs(vii graph, int start, vector<bool> check)
     cout << "\n";
 }
 
-void bfs(vii graph, int start, vector<bool> check)
+void bfs(vii graph, int start, vb visit)
 {
-    // cout << "bfs1";
 
     queue<int> q;
 
     q.push(start);
-    check[start] = true;
+    visit[start] = true;
 
     while (!q.empty())
     {
@@ -91,12 +88,12 @@ void bfs(vii graph, int start, vector<bool> check)
         {
             int temp = graph[now][i];
             // 방문하지 않았다면
-            if (check[temp] == false)
+            if (visit[temp] == false)
             {
 
                 // 큐에 넣어주고 방문했음을 표시한다.
                 q.push(temp);
-                check[temp] = true;
+                visit[temp] = true;
             }
         }
     }
