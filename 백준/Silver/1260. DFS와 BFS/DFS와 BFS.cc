@@ -8,8 +8,11 @@ void bfs(vector<vi> graph, int start, vector<bool> check);
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    
     int N, M, start, u, v;
-
     cin >> N >> M >> start;
 
     vector<vi> graph(N + 1);
