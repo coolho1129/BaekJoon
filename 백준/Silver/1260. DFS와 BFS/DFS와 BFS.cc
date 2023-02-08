@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 #define vi vector<int>
+#define vii vector<vi>
 
 using namespace std;
 
-void dfs(vector<vi> graph, int start, vector<bool> check);
-void bfs(vector<vi> graph, int start, vector<bool> check);
+void dfs(vii graph, int start, vector<bool> check);
+void bfs(vii graph, int start, vector<bool> check);
 
 int main()
 {
@@ -15,8 +16,8 @@ int main()
     int N, M, start, u, v;
     cin >> N >> M >> start;
 
-    vector<vi> graph(N + 1);
-    vector<bool> visit(N + 1);
+    vii graph(N + 1);
+    vector<bool> visit(N + 1,false);
    
 
     for (int i = 0; i < M; i++)
@@ -32,11 +33,10 @@ int main()
     }
 
     dfs(graph, start, visit);
-
     bfs(graph, start, visit);
 }
 
-void dfs(vector<vi> graph, int start, vector<bool> check)
+void dfs(vii graph, int start, vector<bool> check)
 {
     // cout << "dfs2";
 
@@ -71,7 +71,7 @@ void dfs(vector<vi> graph, int start, vector<bool> check)
     cout << "\n";
 }
 
-void bfs(vector<vi> graph, int start, vector<bool> check)
+void bfs(vii graph, int start, vector<bool> check)
 {
     // cout << "bfs1";
 
