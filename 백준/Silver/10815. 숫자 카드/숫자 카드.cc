@@ -23,6 +23,6 @@ int main()
     for (int i = 0; i < M; i++)
     {
         cin >> find;
-        cout << (upper_bound(arr.begin(), arr.end(), find) - lower_bound(arr.begin(), arr.end(), find)) << " ";
+        cout << binary_search(arr.begin(), arr.end(), find) << " ";
     }
 }
