@@ -9,18 +9,18 @@ int main()
 
     int N, M, cnt = 0;
     cin >> N >> M;
-    map<string, string> m;
+    set<string> s;
     string input;
     for (int i = 0; i < N; i++)
     {
         cin >> input;
-        m.insert({input, input});
+        s.insert(input);
     }
 
     for (int i = 0; i < M; i++)
     {
         cin >> input;
-        if (m.find(input) != m.end())
+        if (s.find(input) != s.end())
         {
             cnt++;
         }
