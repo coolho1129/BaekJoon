@@ -1,24 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define MOD 15746
 
 int main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(0);
-    int N, mod = 15746;
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int N;
     cin >> N;
 
-    vector<int> dp(N);
+    int dp[1000000]={1,2};
 
-    dp[0] = 1;
-    dp[1] = 2;
+   
 
     for (int i = 2; i < N; i++)
     {
-        dp[i] = dp[i - 1] % mod + dp[i - 2] % mod;
+        dp[i] = (dp[i - 1] % MOD + dp[i - 2] % MOD)%MOD;
     }
 
-    cout << dp[N - 1] % mod;
+    cout << dp[N - 1];
 }
 
 // 1 1  1개
