@@ -4,8 +4,7 @@ using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+    
     int N, M, pop, count = 0, size = 0, option = 0, index = 0;
     deque<int> deq;
     cin >> N >> M;
