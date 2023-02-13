@@ -14,7 +14,7 @@ int gcd(int a, int b)
 
 int main()
 {
-    int n, a, b, g, c;
+    int n,g;
     cin >> n;
 
     int *input = new int[n];
