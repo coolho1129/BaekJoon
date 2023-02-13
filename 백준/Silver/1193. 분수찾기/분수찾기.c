@@ -3,10 +3,10 @@
 
 int main()
 {
-    long long x;
+    int x;
     int n = 0, m, k = 1, sum = 0;
 
-    scanf("%lld", &x);
+    scanf("%d", &x);
 
     while (!(n * (n + 1) / 2 < x && x <= (n + 1) * (n + 2) / 2))
     {
@@ -17,22 +17,11 @@ int main()
     int L = x - sum;
     m = n + 1;
 
-    if (n % 2 == 1)
+    for (int i = 1; i < L; i++)
     {
-
-        for (int j = 1; j < L; j++)
-        {
-            k++, m--;
-        }
-        printf("%d/%d", k, m);
+        k++, m--;
     }
 
-    else
-    {
-        for (int j = 1; j < L; j++)
-        {
-            k++, m--;
-        }
-        printf("%d/%d ", m, k);
-    }
+    n % 2 == 1? printf("%d/%d", k, m):printf("%d/%d ", m, k);
+    
 }
