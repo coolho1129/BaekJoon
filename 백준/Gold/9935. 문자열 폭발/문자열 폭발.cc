@@ -10,14 +10,14 @@ int main()
 
     cin >> input >> bomb;
 
-    int top = bomb.length() - 1, bomblen = top + 1,size;
+    int len = input.size(), top = bomb.size() - 1, bomblen = top + 1, size;
 
-    for (int i = 0; i < input.length(); i++)
+    for (int i = 0; i < len; i++)
     {
         result += input[i];
-        if (input[i] == bomb[top] && result.length() >= bomb.length())
+        if (input[i] == bomb[top] && result.size() >= bomb.size())
         {
-            size=result.length()-1;
+            size = result.size() - 1;
             for (int j = size; j > size - bomblen; j--)
             {
                 if (result[j] != bomb[top])
@@ -43,5 +43,5 @@ int main()
         }
     }
 
-    result.length() != 0 ? cout << result : cout << "FRULA";
+    result.empty() ? cout <<"FRULA" : cout << result;
 }
