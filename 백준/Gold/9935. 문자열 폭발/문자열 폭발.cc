@@ -10,7 +10,7 @@ int main()
 
     cin >> input >> bomb;
 
-    int len = input.size(), top = bomb.size() - 1, bomblen = top + 1, size;
+    int len = input.size(), bomblen = bomb.size(),top = bomblen - 1 , size;
 
     for (int i = 0; i < len; i++)
     {
