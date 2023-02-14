@@ -10,15 +10,15 @@ int main()
 
     cin >> input >> bomb;
 
-    int len = input.size(), bomblen = bomb.size(),top = bomblen - 1 , size;
+    int len = input.size(), bomblen = bomb.size(),top = bomblen - 1 , idx;
 
     for (int i = 0; i < len; i++)
     {
         result += input[i];
         if (input[i] == bomb[top] && result.size() >= bomb.size())
         {
-            size = result.size() - 1;
-            for (int j = size; j > size - bomblen; j--)
+            idx = result.size() - 1;
+            for (int j = idx; j > idx - bomblen; j--)
             {
                 if (result[j] != bomb[top])
                 {
