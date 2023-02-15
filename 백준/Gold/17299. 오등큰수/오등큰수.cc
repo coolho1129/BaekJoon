@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int F[100000000] = {0};
+
 int main()
 {
     ios::sync_with_stdio(false);
@@ -11,7 +11,7 @@ int main()
     cin >> N;
     vector<int> A(N), NGE(N);
     stack<int> s;
-
+   int F[1000001] = {0};
     for (int i = 0; i < N; i++)
     {
         cin >> A[i];
