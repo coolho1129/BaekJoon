@@ -63,7 +63,7 @@ int main()
 
         else
         {
-            while (num <= input[i])
+            for (; num <= input[i];)
             {
                 stack.push(num++);
                 pushpop[size++] = '+';

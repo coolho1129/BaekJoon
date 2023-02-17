@@ -1,11 +1,8 @@
 #include <stdio.h> 
 
-
-
-
 void Combination(int N, int M)
 {
-	long n = 1, K = N;
+	int n = 1, K = N;
 
 	
 		if (N >= M / 2)
@@ -22,7 +19,7 @@ void Combination(int N, int M)
 			M--;
 
 		}
-		printf("%ld\n", n);
+		printf("%d\n", n);
 
 	}
 
