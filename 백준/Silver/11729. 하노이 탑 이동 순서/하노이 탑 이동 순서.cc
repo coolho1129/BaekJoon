@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int cnt = 0;
+
 void hanoi(int N, int A, int B, int C)
 {
 
