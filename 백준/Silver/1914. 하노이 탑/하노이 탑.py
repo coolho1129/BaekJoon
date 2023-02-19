@@ -1,11 +1,11 @@
 def hanoi(N, A, B, C):
 
     if N == 1:
-        print(A,C) 
+        print("%d %d"%(A,C)) 
 
     else:
         hanoi(N - 1, A, C, B)
-        print(A,C)
+        print("%d %d"%(A,C))
         hanoi(N - 1, B, A, C);
 
     
