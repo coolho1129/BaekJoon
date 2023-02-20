@@ -18,42 +18,48 @@ void hanoi(int N, int A, int B, int C)
     }
 }
 
-void power(char *result, int N)
+void reverse(char arr[])
 {
-    int mul = 1, carry = 0, len = 0, cnt = 0;
-
-    for (int i = 0; i < N; i++)
+    int len = strlen(arr);
+    for (int i = 0; i < len / 2; i++)
     {
-        len = strlen(result);
-
-        for (int j = 0; j < len + 1; j++)
-        {
-            mul = ((j == len) ? carry : (result[j] - '0')* 2 + carry);
-            result[j] = mul % 10 + '0';
-            carry = mul / 10;
-        }
+        char temp = arr[i];
+        arr[i] = arr[len - i - 1];
+        arr[len - i - 1] = temp;
     }
 }
 
-void printresult(char *result)
+void power(char *result, int N)
 {
+    int mul = 1, carry = 0, len = 0;
 
-    int len = strlen(result);
-    bool flag = true;
-
-    result[0] = (((result[0] - '0') - 1) + '0');
-
-    for (int i = len - 1; i > 0; i--)
+    for (int i = 0; i < N; i++)
     {
-        if (result[i] == '0' && flag)
-            continue;
-        else
+        reverse(result);
+        len = strlen(result);
+        carry = 0;
+
+        for (int j = 0; j < len; j++)
         {
-            cout << result[i];
-            flag = false;
+            int tmp = (result[j] - '0');
+
+            while (tmp < 0)
+                tmp += '0';
+
+            mul = tmp * 2 + carry;
+            result[j] = mul % 10 + '0';
+            carry = mul / 10;
         }
+        if (carry)
+            result[len] = (carry + '0');
+
+        reverse(result);
     }
-    cout << result[0] << "\n";
+
+    int maxidx = strlen(result) - 1;
+    result[maxidx] = (result[maxidx] - '0' - 1) + '0';
+
+    cout << result << "\n";
 }
 
 int main()
@@ -61,7 +67,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    char result[102] = {
+    char result[31] = {
         0,
     };
 
@@ -71,8 +77,6 @@ int main()
     cin >> N;
 
     power(result, N);
-    printresult(result);
-
     if (N <= 20)
         hanoi(N, 1, 2, 3);
 }
