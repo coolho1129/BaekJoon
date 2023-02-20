@@ -28,7 +28,7 @@ void power(char *result, int N)
 
         for (int j = 0; j < len + 1; j++)
         {
-            mul = ((j == len) ? carry : ((result[j] == 0) ? 0 : (result[j] - '0')) * 2 + carry);
+            mul = ((j == len) ? carry : (result[j] - '0')* 2 + carry);
             result[j] = mul % 10 + '0';
             carry = mul / 10;
         }
