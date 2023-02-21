@@ -4,40 +4,28 @@
 
 void Combination(int N, int M)
 {
-	long n = 1, r = 1, K = N;
+	long n = 1,K = M;
 
-	
-		if (N >= M / 2)
-		{
-			K = M - N;
-
-		}
-
-
-		for (int i = 1; i <= K; i++)
-		{
-			n *= M;
-			n /= i;
-			M--;
-
-		}
-		printf("%ld\n", n);
-
-	
-
-
-		
+	if (M >= N / 2)
+	{
+		K = N - M;
 	}
+
+	for (int i = 1; i <= K; i++)
+	{
+		n *= N;
+		n /= i;
+		N--;
+	}
+	printf("%ld\n", n);
+}
 
 
 
 int main()
 {
 	int  N, M;
+	scanf("%d %d", &N, &M);
 	
-		scanf("%d %d", &N, &M);
-		Combination(M, N);
-
-
-	
+    Combination(N, M);
 }
