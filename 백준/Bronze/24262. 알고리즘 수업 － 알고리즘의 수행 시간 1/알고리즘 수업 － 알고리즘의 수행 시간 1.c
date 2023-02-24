@@ -1,0 +1,1 @@
+int main(){puts("1\n0");}
