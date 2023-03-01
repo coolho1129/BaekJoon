@@ -32,15 +32,13 @@ int main()
         {
             int size = divisor.size();
 
-            cout << N << " "
-                 << "=";
+            cout << N << " " << "=";
 
             for (int i = 0; i < size; i++)
             {
                 cout << " " << divisor[i];
                 if (i != size - 1)
-                    cout << " "
-                         << "+";
+                    cout << " "<< "+";
             }
         }
         else
