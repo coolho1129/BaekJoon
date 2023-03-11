@@ -11,7 +11,7 @@ for _ in range(T):
         d1 = ((x1-x)**2 + (y1-y)**2)**0.5
         d2 = ((x2-x)**2 + (y2-y)**2)**0.5
        
-        if ((d1 < r) or (d2 < r)) and (not (d1 < r and d2 < r)):
+        if (d1 < r) ^ (d2 < r):
             cnt += 1
         
 
