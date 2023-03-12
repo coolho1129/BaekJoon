@@ -1,5 +1,6 @@
 import sys
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10**5)
+input = sys.stdin.readline
 
 global cnt
 cnt=1
@@ -16,12 +17,12 @@ def dfs(visit,graph,start):
     
     
 def main():
-    n,m,start=map(int,sys.stdin.readline().split())
+    n,m,start=map(int,input().split())
     graph=[[] for _ in range(n+1)]
     dfs_visit=[0 for _ in range(n+1)]
     
     for _ in range(m):
-        a,b=map(int,sys.stdin.readline().split())
+        a,b=map(int,input().split())
         graph[a].append(b)
         graph[b].append(a)
     
