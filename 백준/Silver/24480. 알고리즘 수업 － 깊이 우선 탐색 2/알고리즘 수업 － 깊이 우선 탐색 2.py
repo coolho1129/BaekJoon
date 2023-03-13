@@ -28,9 +28,8 @@ def main():
         graph[b].append(a)
     
     dfs(dfs_visit,graph,start,result)
-    for i in range(n+1):
-        if i!=0:
-            print(result[i])
+    for i in range(1,n+1):
+         print(result[i])
     
    
     
