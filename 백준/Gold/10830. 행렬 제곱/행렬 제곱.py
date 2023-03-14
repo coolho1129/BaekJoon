@@ -13,21 +13,21 @@ def matrix_mul(matrix1,matrix2):
     
     return result
             
+
 def matrix_pow(matrix,n):
     size=len(matrix)
-    result=[[0 for _ in range(size)] for _ in range(size)]
-    for i in range(0,size):
-        result[i][i]=1
-
+    if n==1:
+         for i in range(size):
+            for j in range(size):
+                matrix[i][j]%=1000
+         return matrix
     
-    while(n>0):
-        if n%2==1:
-            result=matrix_mul(result,matrix)
-            
-        matrix=matrix_mul(matrix,matrix)
-        n//=2
+    tmp=matrix_pow(matrix,n//2)
+    if n % 2==1:
+        return matrix_mul(matrix_mul(tmp, tmp), matrix)
     
-    return result
+    return matrix_mul(tmp, tmp)
+    
 
 
 def matrix_print(matrix):
