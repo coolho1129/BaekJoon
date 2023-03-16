@@ -1,3 +1,6 @@
+import sys
+input=sys.stdin.readline
+
 def check(word, start, end):
     length = (end - start + 1) // 4
     new_word = 'w' * length + 'o' * length + 'l' * length + 'f' * length
@@ -6,9 +9,8 @@ def check(word, start, end):
     return False
 
 def main():
-    word = input()
+    word = input().strip()
     
-    # 1 split words
     f_indexs = []
     for i in range(len(word)):
         if word[i] == 'f' and (i == len(word) - 1 or word[i + 1] != 'f'):
