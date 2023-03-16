@@ -53,9 +53,7 @@ def main():
     for i in range(n):
        for j in range(n):
         if(graph[i][j]=='1' and visit[i][j]==False):
-           counts.append(dfs(i,j,visit,graph))
-           global count
-           count=0
+            bfs(i,j,visit,counts,graph)
     
     counts.sort()
     
