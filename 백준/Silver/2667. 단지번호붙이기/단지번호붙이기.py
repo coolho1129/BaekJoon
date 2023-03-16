@@ -21,27 +21,6 @@ def bfs(x,y,visit,counts,graph):
                 visit[nx][ny] = True
     
     counts.append(count)
-    
-global count
-count=0
-
-def dfs(x,y,visit,graph):
-    n=len(graph)
-    
-    if(0 <= x < n and 0 <= y < n and visit[x][y]==False and graph[x][y]=='1'):
-        visit[x][y]=True
-        global count
-        count+=1
-        dfs(x-1,y,visit,graph)
-        dfs(x+1,y,visit,graph)
-        dfs(x,y-1,visit,graph)
-        dfs(x,y+1,visit,graph)
-    return count
-        
-    
-    
-
-
 
 def main():
     n=int(input())
