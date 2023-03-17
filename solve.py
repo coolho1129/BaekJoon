@@ -1,43 +1,25 @@
-import sys
-input = sys.stdin.readline
+def digit_product(n):
+    prod = 1
+    while n > 0:
+        if n % 10 != 0:
+            prod *= n % 10
+        n //= 10
+    return prod
 
-def matrix_mul(matrix1,matrix2):
-    result=[[0 for _ in range(len(matrix2))] for _ in range(len(matrix1))]
-    
-    for i in range(len(matrix1)):
-        for j in range(len(matrix2[0])):
-            for k in range(len(matrix2)):
-                result[i][j]+=matrix1[i][k]*matrix2[k][j]
-            result[i][j]%=1000000
-    
-    return result
-            
+A, B = map(int, input().split())
 
-def matrix_pow(matrix,n):
-    size=len(matrix)
-    if n==1:
-         for i in range(size):
-            for j in range(size):
-                matrix[i][j]%=1000000
-         return matrix
-    
-    tmp=matrix_pow(matrix,n//2)
-    if n % 2==1:
-        return matrix_mul(matrix_mul(tmp, tmp), matrix)
-    
-    return matrix_mul(tmp, tmp)
-    
+MAXN = int(1e18)
+dp = [[0] * (B+1) for _ in range(MAXN+1)]
+for i in range(1, MAXN+1):
+    dp[i][1] = 1
+for j in range(2, B+1):
+    for i in range(1, MAXN+1):
+        dp[i][j] = dp[i][j-1]
+        if j <= i and i % j == 0:
+            p = j
+            while i % p == 0:
+                dp[i][j] += dp[i//p][j-1]
+                p *= j
 
-def fibonacci(n):
-    fibo=[[1],[0]]
-    matrix=[[1,1],[1,0]]
-    matrix=matrix_pow(matrix,n)
-    result=matrix_mul(matrix,fibo)
-    return result[1][0]
-    
-
-def main():
-    a=int(input())
-    print(fibonacci(a))
-    
-main()
+ans = dp[1][B] - dp[1][A-1]
+print(ans)

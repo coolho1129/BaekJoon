@@ -6,7 +6,7 @@ def hanoi(N, A, B, C):
     else:
         hanoi(N - 1, A, C, B)
         print("%d %d"%(A,C))
-        hanoi(N - 1, B, A, C);
+        hanoi(N - 1, B, A, C)
 
     
 n=int(input())
