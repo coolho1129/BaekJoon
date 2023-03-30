@@ -9,7 +9,7 @@ def dfs(n,m,start,visit):
         return
     
     
-    for i in range(1, n+1):
+    for i in range(start, n+1):
         visit.append(i)
         dfs(n,m,start,visit)
         visit.pop()
