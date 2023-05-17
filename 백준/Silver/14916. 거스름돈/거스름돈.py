@@ -4,7 +4,6 @@ def main():
     n=int(input())
     cnt=0
     
-  
     while(n>0):
         if(n==1 or n==3):
             print(-1)
@@ -20,5 +19,4 @@ def main():
             cnt+=1
     print(cnt)
             
-        
 main()
