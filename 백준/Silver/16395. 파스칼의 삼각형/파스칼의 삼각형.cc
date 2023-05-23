@@ -5,12 +5,10 @@ int Combination[31][31];
 
 void pascal_triangle(int N, int M)
 {
-
     for (int n = 0; n <= N; n++)
     {
-        for (int k = 0; k <= n && k <= N; k++)
+        for (int k = 0; k <= n; k++)
         {
-
             if (n == k || k == 0)
                 Combination[n][k] = 1;
             else
