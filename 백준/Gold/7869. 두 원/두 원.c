@@ -3,7 +3,6 @@
 #include <stdio.h> 
 #include <math.h>
 
-
 double cos2law(double a,double b,double c) {
 	return (pow(b, 2) + pow(c, 2) - pow(a, 2)) / (2 * b * c);
 }
@@ -27,7 +26,5 @@ int main() {
 
 	Area = round(Area * 1000) / 1000;
 	printf("%.3lf", Area);
-
-
-	return 0;
+    return 0;
 }
