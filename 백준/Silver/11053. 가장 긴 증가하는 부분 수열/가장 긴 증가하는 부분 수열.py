@@ -8,9 +8,8 @@ def main():
     
     for i in range(1,n):  
         for j in range(0,i):
-            if(num[j]<num[i]):
-                if(sublen[j]>=sublen[i]):
-                    sublen[i]=sublen[j]+1
+            if(num[j]<num[i] and sublen[j]>=sublen[i]):
+                sublen[i]=sublen[j]+1
     
     print(max(sublen))             
     
