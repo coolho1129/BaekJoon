@@ -11,7 +11,7 @@ def main():
             if(i%6==1):
                 dp[i]=dp[i-1]+sum-1
             else:
-                if(i %6==0):
+                if(i%6==0):
                     sum+=1    
                 dp[i]=dp[i-1]+sum
     
