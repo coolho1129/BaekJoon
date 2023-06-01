@@ -17,7 +17,7 @@ def main():
                 dp[i][j]=dp[i-1][j-1]+triangle[i][j]
            
            else:
-                dp[i][j]+=max(dp[i-1][j-1],dp[i-1][j])+triangle[i][j]
+                dp[i][j]=max(dp[i-1][j-1],dp[i-1][j])+triangle[i][j]
            
         
     print(max(dp[n-1]))
