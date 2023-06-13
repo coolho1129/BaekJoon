@@ -3,8 +3,6 @@ input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 import heapq
 
-
-
 def main():
     n = int(input().strip())
     lecture=[]
@@ -22,10 +20,7 @@ def main():
         else:
             heapq.heappop(prior_que)
             heapq.heappush(prior_que,lecture[i][1])
+    
     print(len(prior_que))
             
-    
-    
-        
-
 main()
