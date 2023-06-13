@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
 def activate(meeting):
     n=len(meeting)
@@ -8,17 +7,16 @@ def activate(meeting):
     cnt=1
     k=0
     
-    
     for i in range(1,n):
         if(meeting[i][0]>=meeting[k][1]):
             cnt+=1
             k=i
     return cnt
 
-
 def main():
     n = int(input().strip())
     meeting=[]
+    
     for _ in range(n):
         start,finish=map(int,input().split())
         meeting.append((start,finish))
