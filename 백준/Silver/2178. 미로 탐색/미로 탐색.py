@@ -4,19 +4,19 @@ input=sys.stdin.readline
 
 def exit_maze(maze,start,end,n,m):
     visit=[[False for _ in range(m)] for _ in range(n)]
-    distance=[[-1  for _ in range(m)]for _ in range(n)]
+    node_cnt=[[0  for _ in range(m)]for _ in range(n)]
 
     q = deque()
     q.append(start)
     visit[start[0]][start[1]] = True
-    distance[start[0]][start[1]] = 1
+    node_cnt[start[0]][start[1]] = 1
     
     
     while q:
         node=q.popleft()
         row,col=node
         if node == end:
-            return distance[row][col]
+            return node_cnt[row][col]
         
         neighbors = [(row-1, col), (row+1, col), (row, col-1), (row, col+1)]
         
@@ -34,7 +34,7 @@ def exit_maze(maze,start,end,n,m):
 
             q.append(neighbor)
             visit[n_row][n_col] = True
-            distance[n_row][n_col] = distance[row][col] + 1
+            node_cnt[n_row][n_col] = node_cnt[row][col] + 1
 
     return -1
 
