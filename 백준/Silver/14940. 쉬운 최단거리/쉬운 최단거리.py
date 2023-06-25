@@ -7,7 +7,6 @@ def find_start(graph,n,m):
         for j in range(m):
             if(graph[i][j]==2):
                 return i,j
-    return -1,-1
 
 def bfs_shortface(graph,n,m):
     visit=[[False for _ in range(m)] for _ in range(n)]
@@ -18,8 +17,7 @@ def bfs_shortface(graph,n,m):
     q.append((i,j))
     visit[i][j] = True
     distance[i][j] = 0
-    
-    
+   
     while q:
         node = q.popleft()
         x,y = node
@@ -40,12 +38,9 @@ def bfs_shortface(graph,n,m):
         for j in range(m):
             if graph[i][j] == 1 and visit[i][j]==False:
                 distance[i][j]=-1
-            
-
+        
     return distance
-
-    
-    
+   
 def main():
     n,m=map(int,input().split())
     graph=[list(map(int,input().split())) for _ in range(n)]
