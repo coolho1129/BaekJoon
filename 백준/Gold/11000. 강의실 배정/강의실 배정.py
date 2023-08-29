@@ -15,11 +15,9 @@ def main():
 
     heapq.heappush(prior_que,lecture[0][1])
     for i in range(1,n):
-        if lecture[i][0] < prior_que[0]:
-            heapq.heappush(prior_que,lecture[i][1])
-        else:
+        if lecture[i][0] >= prior_que[0]:
             heapq.heappop(prior_que)
-            heapq.heappush(prior_que,lecture[i][1])
+        heapq.heappush(prior_que,lecture[i][1])
     
     print(len(prior_que))
             
