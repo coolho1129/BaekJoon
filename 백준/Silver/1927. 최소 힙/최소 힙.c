@@ -41,36 +41,19 @@ int pop(int* n) {
 	child = 2;
 
 	while (child <= *n) {
-
-
-
 		if ((child < *n) && heap[child].key > heap[child + 1].key) {
 			child++;
 		}
-
 		if (temp.key <= heap[child].key) {
 			break;
 		}
-
 		heap[parent] = heap[child];
 		parent = child;
 		child *= 2;
-
-
-
-
-
-
-
 	}
 	heap[parent] = temp;
 	return item.key;
 }
-
-
-
-
-
 
 int main() {
 
@@ -85,13 +68,8 @@ int main() {
 			push(item, &n);
 		}
 		else{
-			
-			printf("%d\n", pop(&n));
-			
+			printf("%d\n", pop(&n));		
 		}
 	}
     return 0;
 }
-
-
-
