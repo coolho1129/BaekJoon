@@ -1,11 +1,9 @@
 import sys
 input=sys.stdin.readline
 
-
 def root(ids,i):
     while i != ids[i]: i=ids[i]
     return i
-
 
 def union(size,ids,p,q):
     i,j=root(ids,p),root(ids,q)
@@ -19,7 +17,6 @@ def union(size,ids,p,q):
         ids[j] = i
         size[i]+=size[j]
     
-
 def main():
     n=int(input())
     m=int(input())
