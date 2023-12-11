@@ -1,5 +1,5 @@
 import sys
-from heapq import heappush,heappop
+from heapq import heappush, heappop
 input=sys.stdin.readline
 INF=int(1e9)
 
@@ -8,17 +8,17 @@ def shortpath(start,graph,n):
     visit=[False]*n
     dist[start]=0
     
-    pq=[]
-    heappush(pq,(dist[start],start))
+    minpq=[]
+    heappush(minpq,(dist[start],start))
     
-    while(pq):
-        _,node=heappop(pq)
+    while(minpq):
+        _,node=heappop(minpq)
         if(not visit[node]):
             visit[node]=True
             for next,cost in graph[node]:
                 if(dist[node]+cost<dist[next]):
                     dist[next]=dist[node]+cost
-                    heappush(pq,(dist[next],next))
+                    heappush(minpq,(dist[next],next))
     
     for res in dist:
         print('INF' if res==INF  else res)
