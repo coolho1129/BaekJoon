@@ -7,16 +7,16 @@ def shortpath(s,t,g,n):
         if distTo[v]<float('inf'):
             path = []
             e = edgeTo[v]
-        
+            
             if e !=None:
                 path.append(e[1])
             
             while e != None:
                 path.append(e[0])
                 e = edgeTo[e[0]]
+            
             path.reverse()
             return path
-    
     
     distTo = [float('inf')] * (n+1)
     edgeTo = [None] * (n+1)
@@ -34,7 +34,6 @@ def shortpath(s,t,g,n):
                     edgeTo[w] = (v,w)
                     heappush(minpq,(distTo[w],w))  
                     
-    
     path = pathTo(t)
     return distTo[t],len(path),path
 
