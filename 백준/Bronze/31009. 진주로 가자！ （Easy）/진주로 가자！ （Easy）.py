@@ -16,9 +16,6 @@ def main():
             
         if price <= 1000:
             costs[price]+=1
-        else:
-            cnt+=1
-            
     
     for res in costs[jincost+1:]:
         cnt+=res
