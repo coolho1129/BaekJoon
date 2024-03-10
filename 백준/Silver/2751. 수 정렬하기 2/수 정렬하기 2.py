@@ -1,34 +1,31 @@
-import sys,random
-input=sys.stdin.readline
+import random
 
-def partition(a,lo,hi):
-    i,j=lo+1,hi
-    while(True):
-        while(i<=hi and a[i]<a[lo]):i+=1
-        while(j>=lo+1 and a[lo]<a[j]):j-=1
-        if(j<=i):break
-        a[i],a[j]=a[j],a[i]
-        i,j=i+1,j-1
-        
-    a[lo],a[j]=a[j],a[lo]
-    return j
+def partition3Way(a, lo, hi):
+    if (hi <= lo): return
+    v = a[lo]
+    lt, gt = lo, hi   
+    i = lo
+    while i <= gt:
+        if a[i] < v:
+            a[lt], a[i] = a[i], a[lt]  # Swap
+            lt, i = lt+1, i+1
+        elif a[i] > v:
+            a[gt], a[i] = a[i], a[gt]  # Swap
+            gt = gt-1
+        else: i = i+1
 
-def dividedNpartition(a,lo,hi):
-    if(hi<=lo):return
-    j=partition(a,lo,hi)
-    dividedNpartition(a,lo,j-1)
-    dividedNpartition(a,j+1,hi)
-    
-def quicksort(a):
+    partition3Way(a, lo, lt-1)
+    partition3Way(a, gt+1, hi)
+
+def quickSort3Way(a):
     random.shuffle(a)
-    dividedNpartition(a,0,len(a)-1)
-    
 
-n=int(input())
-a=[0]*n
-for i in range(n):
-    a[i]=int(input())
-quicksort(a)
+    partition3Way(a, 0, len(a)-1)
+    return a
 
-for v in a:
-    print(v)
+if __name__ == "__main__":
+    n=int(input())
+    a=[int(input()) for _ in range(n)]
+    res=quickSort3Way(a)
+    for r in res:
+        print(r)
