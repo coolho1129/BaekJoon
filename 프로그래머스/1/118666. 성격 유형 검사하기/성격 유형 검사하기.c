@@ -5,9 +5,9 @@
 // survey_len은 배열 survey의 길이입니다.
 // choices_len은 배열 choices의 길이입니다.
 // 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
-
-char *solution(const char *survey[], size_t survey_len, int choices[], size_t choices_len)
-{
+char* solution(const char* survey[], size_t survey_len, int choices[], size_t choices_len) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    char* answer = calloc(5,sizeof(char));
     int score[8] = {0, 0, 0, 0, 0, 0, 0, 0};
     int getscore[9] = {0,
                        3,
@@ -27,8 +27,6 @@ char *solution(const char *survey[], size_t survey_len, int choices[], size_t ch
         'M',
         'A',
         'N'};
-
-    char expect[5] = {0, 0, 0, 0, 0};
 
     for (int i = 0; i < survey_len; i++)
     {
@@ -80,14 +78,14 @@ char *solution(const char *survey[], size_t survey_len, int choices[], size_t ch
         case 'A':
             if (choices[i] < 4)
                 score[6] += getscore[choices[i]];
-            else if (choices[i] > 4)
+            else
                 score[7] += getscore[choices[i]];
             break;
 
         case 'N':
             if (choices[i] < 4)
                 score[7] += getscore[choices[i]];
-            else if (choices[i] > 4)
+            else
                 score[6] += getscore[choices[i]];
             break;
         }
@@ -97,21 +95,12 @@ char *solution(const char *survey[], size_t survey_len, int choices[], size_t ch
 
     for (int i = 0; i < 8; i += 2)
     {
-        // printf("%d", score[i]);
         if (score[i] < score[i + 1])
-        {
-            expect[index] = type[i + 1];
-        }
-
+            answer[index] = type[i + 1];
         else
-        {
-            expect[index] = type[i];
-        }
+            answer[index] = type[i];
+        
         index++;
     }
-
-    char *answer = calloc(5, sizeof(char));
-    strcpy(answer, expect);
-
     return answer;
 }
