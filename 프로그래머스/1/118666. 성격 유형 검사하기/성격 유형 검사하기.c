@@ -9,7 +9,8 @@
 char *solution(const char *survey[], size_t survey_len, int choices[], size_t choices_len)
 {
     int score[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    int getscore[9] = {0,3,
+    int getscore[9] = {0,
+                       3,
                        2,
                        1,
                        0,
