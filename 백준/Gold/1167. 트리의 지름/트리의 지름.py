@@ -1,9 +1,7 @@
 import sys
 from heapq import heappush,heappop
+sys.setrecursionlimit(10**6)
 input=sys.stdin.readline
-
-
-
 
 def main():
     n = int(input())
@@ -17,9 +15,7 @@ def main():
         for i in range(1,len(edge),2):
             if edge[i] !=-1:
                 graph[v-1].append((edge[i]-1,edge[i+1]))
-                
-    
-
+ 
     visit = [False]*n    
     def dfs(v,visit,dist):
         visit[v]=True
