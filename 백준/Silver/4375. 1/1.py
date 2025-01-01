@@ -12,12 +12,10 @@ def sol(n):
 
     print(res)
 
-
 def main():
     lines = sys.stdin.readlines()
     for n in lines:
         sol(int(n))
-
 
 if __name__ == "__main__":
     main()
