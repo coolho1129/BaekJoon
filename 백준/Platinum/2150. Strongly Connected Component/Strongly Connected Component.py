@@ -2,58 +2,58 @@ import sys
 sys.setrecursionlimit(10**6)
 input=sys.stdin.readline
 
-def topologicalSort(graph,V):
-    def recur(v):
-        visited[v] = True
-        for w in graph[v]:
-            if not visited[w]: recur(w)
-        reverseList.append(v)
-        
-    visited = [False for _ in range(V)]
-    reverseList = []
-    for v in range(V): 
-        if not visited[v]: recur(v)
-
-    reverseList.reverse()
-    return reverseList
-
-def reverse(graph, V):
-    rev_graph = [[] for _ in range(V)]
-    for v in range(V):
-        for w in graph[v]:
-            rev_graph[w].append(v) 
-    return rev_graph
-    
-def main():
-    V,E = map(int, input().split())
-    graph = [[] for _ in range(V)] 
+def tarjan_scc(V, graph):
+    index = 0
+    indices = [-1] * V  # DFS 방문 순서
+    low_link = [-1] * V  # SCC 루트 찾기
+    on_stack = [False] * V  # 스택 포함 여부
+    stack = []
     scc_list = []
-    for _ in range(E):
-        v,w = map(int, input().split())
-        graph[v-1].append(w-1)
-        
-    count =  0
-    ids = [-1 for _ in range(V)]
     
-    def dfs(v,scc):         
-            ids[v] = count
-            scc.append(v)
-            for w in graph[v]:
-                if ids[w] < 0: 
-                    dfs(w,scc)
-                    
-    reverse_graph = reverse(graph,V)
-    order =  topologicalSort(reverse_graph ,V)
-    for v in order:
-        if ids[v] < 0:
+    def dfs(v):
+        nonlocal index
+        indices[v] = low_link[v] = index
+        index += 1
+        stack.append(v)
+        on_stack[v] = True
+
+        for w in graph[v]:
+            if indices[w] == -1:  # 방문하지 않은 노드
+                dfs(w)
+                low_link[v] = min(low_link[v], low_link[w])
+            elif on_stack[w]:  # 스택에 있는 노드면 SCC 가능성 존재
+                low_link[v] = min(low_link[v], indices[w])
+
+        # SCC 발견
+        if indices[v] == low_link[v]:
             scc = []
-            dfs(v, scc)
-            scc.sort()
+            while True:
+                w = stack.pop()
+                on_stack[w] = False
+                scc.append(w)
+                if w == v:
+                    break
+            scc.sort()  # SCC 내부 정점 정렬
             scc_list.append(scc)
-            count += 1
-            
+
+    for v in range(V):
+        if indices[v] == -1:
+            dfs(v)
+
     scc_list.sort(key=lambda x: x[0])
-    print(count)
+
+    return scc_list
+
+def main():
+    V, E = map(int, input().split())
+    graph = [[] for _ in range(V)]
+    for _ in range(E):
+        v, w = map(int, input().split())
+        graph[v-1].append(w-1) 
+
+    scc_list = tarjan_scc(V, graph)
+
+    print(len(scc_list))
     for scc in scc_list:
         for scc_v in scc:
             print(scc_v+1, end=' ')
