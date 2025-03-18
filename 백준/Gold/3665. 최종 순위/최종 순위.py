@@ -45,9 +45,7 @@ def main():
         
         for i in range(len(t)):
             for j in range(i+1,len(t)):
-                if ((t[i], t[j]) in changes):  
-                    graph[t[j]-1].append(t[i]-1)
-                elif ((t[j], t[i]) in changes):
+                if ((t[i], t[j]) in changes or(t[j], t[i]) in changes):  
                     graph[t[j]-1].append(t[i]-1)
                 else:
                     graph[t[i]-1].append(t[j]-1)
