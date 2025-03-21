@@ -40,12 +40,7 @@ def Kruskal(pq,v):
             weightsum+=weight
             
     return mst,weightsum
-
-def round_half_up(num, digits=0):
-    factor = 10 ** digits
-    return math.floor(num * factor + 0.5) / factor
-    
-    
+  
 def main():
     n = int(input())
     pq = PriorityQueue()
