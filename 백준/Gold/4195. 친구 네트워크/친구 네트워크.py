@@ -41,5 +41,6 @@ def main():
                 index+=1
             
             print(union(size,ids,names[name1],names[name2]))
-       
+
+            
 main()
