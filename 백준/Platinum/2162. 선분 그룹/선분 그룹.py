@@ -2,7 +2,6 @@ import sys
 
 input=sys.stdin.readline
 
-
 ids = []
 size = []
 
@@ -22,9 +21,6 @@ def union(p, q):
     else:
         ids[id2] = id1
         size[id1] += size[id2]
-
-import sys
-input = sys.stdin.readline
 
 def ccw(a, b, c):
     D = (a[0]*b[1] + b[0]*c[1] + c[0]*a[1]
