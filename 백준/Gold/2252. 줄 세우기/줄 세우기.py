@@ -4,17 +4,18 @@ input=sys.stdin.readline
 
 def topsort(g):
     def dfs(v):
-        visited[v]=True
+        visit[v]=True
         for w in g[v]:
-            if not visited[w]:
+            if not visit[w]:
                 dfs(w)
         reverseList.append(v)
+    
     n = len(g)
-    visited = [False for _ in range(n)]
+    visit = [False]*n  
     reverseList = []
     
     for v in range(n):
-        if not visited[v]:
+        if not visit[v]:
             dfs(v)
     
     reverseList.reverse()
